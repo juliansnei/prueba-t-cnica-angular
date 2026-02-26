@@ -5,19 +5,19 @@ Se integra con una API REST construida en Laravel.
 
 ## Funcionalidades
 
-## Crear contacto
+### Crear contacto
 
-## Editar contacto
+### Editar contacto
 
-## Eliminar contacto (individual y múltiple)
+### Eliminar contacto (individual y múltiple)
 
-## Búsqueda en tiempo real
+### Búsqueda en tiempo real
 
-## Formularios reactivos con validaciones
+### Formularios reactivos con validaciones
 
-## Confirmaciones antes de eliminar
+### Confirmaciones antes de eliminar
 
-## Arquitectura
+### Arquitectura
 
 El proyecto implementa una separación clara de responsabilidades:
 
