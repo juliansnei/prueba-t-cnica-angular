@@ -17,7 +17,7 @@ Se integra con una API REST construida en Laravel.
 
 ### Confirmaciones antes de eliminar
 
-### Arquitectura
+## Arquitectura
 
 El proyecto implementa una separación clara de responsabilidades:
 
