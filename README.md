@@ -3,21 +3,21 @@
 Aplicación CRUD desarrollada con Angular 17+, utilizando Standalone Components y Signals para la gestión de estado reactiva.
 Se integra con una API REST construida en Laravel.
 
-🚀 ##Funcionalidades
+## Funcionalidades
 
-#✅ Crear contacto
+## Crear contacto
 
-#✏️ Editar contacto
+## Editar contacto
 
-#🗑 Eliminar contacto (individual y múltiple)
+## Eliminar contacto (individual y múltiple)
 
-#🔎 Búsqueda en tiempo real
+## Búsqueda en tiempo real
 
-#📋 Formularios reactivos con validaciones
+## Formularios reactivos con validaciones
 
-#🔔 Confirmaciones antes de eliminar
+## Confirmaciones antes de eliminar
 
-#🧠 Arquitectura
+## Arquitectura
 
 El proyecto implementa una separación clara de responsabilidades:
 
@@ -66,7 +66,7 @@ TypeScript
 
 Laravel (API REST)
 
-#📁 Estructura del Proyecto
+## Estructura del Proyecto
 src/
  ├── contactos/
  │    ├── contactos.component.ts
@@ -85,7 +85,7 @@ DELETE /contactos/{id}
 
 Eliminación múltiple personalizada
 
-#📌 Enfoque Técnico
+# Enfoque Técnico
 
 Gestión de estado moderna con Angular Signals
 
@@ -97,7 +97,7 @@ Eliminación múltiple optimizada
 
 Confirmaciones con PrimeNG
 
-👨‍💻 Autor
+# Autor
 
 Julian Alvarez Valencia
 Frontend & Backend Developer (Angular + Laravel)
