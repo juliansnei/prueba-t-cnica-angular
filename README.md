@@ -48,7 +48,7 @@ Componentes desacoplados
 
 Mayor escalabilidad
 
-🛠 Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 Angular 17+
 
@@ -85,7 +85,7 @@ DELETE /contactos/{id}
 
 Eliminación múltiple personalizada
 
-# Enfoque Técnico
+## Enfoque Técnico
 
 Gestión de estado moderna con Angular Signals
 
@@ -97,7 +97,7 @@ Eliminación múltiple optimizada
 
 Confirmaciones con PrimeNG
 
-# Autor
+## Autor
 
 Julian Alvarez Valencia
 Frontend & Backend Developer (Angular + Laravel)
