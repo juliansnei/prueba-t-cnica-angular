@@ -1,4 +1,4 @@
-📇 #Contact Manager – Angular
+📇 # Contact Manager – Angular
 
 Aplicación CRUD desarrollada con Angular 17+, utilizando Standalone Components y Signals para la gestión de estado reactiva.
 Se integra con una API REST construida en Laravel.
