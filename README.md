@@ -1,57 +1,103 @@
-**Prueba Técnica Angular - Garantías Comunitarias**  
+📇 Contact Manager – Angular
 
-A continuación, se describen las tareas que debes realizar en el framework Angular para completar esta prueba técnica:  
+Aplicación CRUD desarrollada con Angular 17+, utilizando Standalone Components y Signals para la gestión de estado reactiva.
+Se integra con una API REST construida en Laravel.
 
----
+🚀 Funcionalidades
 
-### **Tareas a realizar**  
+✅ Crear contacto
 
-1. **Configuración inicial:**  
-   - Instala Angular localmente en tu entorno de desarrollo.  
-   - Configura las variables de entorno para definir la URL del API Restful que se utilizará en los servicios.  
+✏️ Editar contacto
 
-2. **Solución de errores:**  
-   - Identifica y corrige posibles errores que impidan la correcta ejecución del Frontend.  
+🗑 Eliminar contacto (individual y múltiple)
 
-3. **Funcionalidad del CRUD de entidades:**  
-   - **Botón eliminar:** Implementa la funcionalidad en el toolbar para permitir el borrado múltiple de entidades seleccionadas.  
-   - **Formulario reactivo:**  
-     - Crea un formulario reactivo que permita **crear y editar entidades**.  
-     - Muestra el formulario en un modal al hacer clic en el botón correspondiente.  
-   - **Métodos del CRUD:** Completa los métodos necesarios para que el CRUD esté completamente funcional, conectando con el API de Laravel proporcionado.  
+🔎 Búsqueda en tiempo real
 
-4. **CRUD de contactos:**  
-   - Implementa un CRUD similar al de entidades, con tabla, formularios reactivos y servicios.  
-   - Asegúrate de que los contactos estén relacionados con una entidad:  
-     - En el formulario reactivo de contactos, agrega un campo de selección (combo o autocomplete) para elegir entre las entidades listadas por el servicio de entidades.  
+📋 Formularios reactivos con validaciones
 
-5. **Validaciones:**  
-   - Implementa validaciones con mensajes claros para los formularios reactivos de entidades y contactos.  
-   - Incluye advertencias específicas que ayuden al usuario a corregir errores al completar los formularios.  
+🔔 Confirmaciones antes de eliminar
 
----
+🧠 Arquitectura
 
-### **Instrucciones de entrega**  
+El proyecto implementa una separación clara de responsabilidades:
 
-1. **Rama para cambios:**  
-   - Clonar el repositorio en tu máquina local
-   - Crea una rama en el repositorio siguiendo el formato: [Tus iniciales]_[Número de identificación].
-   - Realiza todos los cambios necesarios en esta rama.
+Component (UI)
+   ↓
+Manager (State Container con Signals)
+   ↓
+Service (HTTP Layer)
+🔹 Service
 
-2. **Sube los cambios a tu repositorio:**  
-   - Una vez completadas las tareas, sube tus cambios a un repositorio publico en tu cuenta de github. 
-   - Envianos un correo con la ruta del repositorio.  
+Encargado exclusivamente de las peticiones HTTP.
 
-3. **Entrega alternativa:**  
-   - Si encuentras dificultades para publicar en tu repositorio, sigue estos pasos: 
-     - Comprime la carpeta del proyecto Angular.  
-     - Excluye carpetas innecesarias como `node_modules`.  
-     - Sube el archivo comprimido a una plataforma de almacenamiento en la nube (OneDrive, Google Drive, etc.).  
-     - Comparte el enlace de descarga en un correo dirigido a la persona que te envió esta prueba.  
+🔹 Manager
 
-4. **Formato de entrega por correo:**  
-   - Incluye en el correo una descripción breve del trabajo realizado y cualquier detalle relevante sobre la prueba.  
+Administra el estado global usando signal() y computed().
 
----
+🔹 Component
 
-Si tienes alguna pregunta o necesitas asistencia técnica durante la ejecución de esta prueba, no dudes en comunicarte con el contacto que te proporcionó esta tarea. ¡Buena suerte! 😊
+Controla la interacción del usuario y la presentación.
+
+Esto permite:
+
+Estado centralizado
+
+Mutaciones inmutables
+
+Componentes desacoplados
+
+Mayor escalabilidad
+
+🛠 Tecnologías Utilizadas
+
+Angular 17+
+
+Angular Signals
+
+Standalone Components
+
+Reactive Forms
+
+PrimeNG
+
+RxJS
+
+TypeScript
+
+Laravel (API REST)
+
+📁 Estructura del Proyecto
+src/
+ ├── contactos/
+ │    ├── contactos.component.ts
+ │    ├── contacto-manager.ts
+ │    ├── contacto.service.ts
+ │    └── form-contactos.component.ts
+🔌 Endpoints Consumidos
+
+GET /contactos
+
+POST /contactos
+
+PUT /contactos/{id}
+
+DELETE /contactos/{id}
+
+Eliminación múltiple personalizada
+
+📌 Enfoque Técnico
+
+Gestión de estado moderna con Angular Signals
+
+Reutilización de formulario para crear y editar
+
+Manejo correcto de fechas (Angular ↔ MySQL)
+
+Eliminación múltiple optimizada
+
+Confirmaciones con PrimeNG
+
+👨‍💻 Autor
+
+Julian Alvarez Valencia
+Frontend & Backend Developer (Angular + Laravel)

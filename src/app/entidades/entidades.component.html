@@ -4,6 +4,7 @@
 <p-card header="Entidades">
 
     <p-toast />
+<p-confirmDialog />
     <p-toolbar styleClass="mb-4 gap-2">
         <ng-template pTemplate="left">
             <p-button 
@@ -11,11 +12,14 @@
                 label="Nueva" 
                 icon="pi pi-plus" 
                 class="mr-2" 
-                (onClick)="openNew()" />
+                (onClick)="openNewCreate()" />
+              
             <p-button 
                 severity="danger" 
-                label="Eliminar" 
+                label="Eliminar"
+                [class.disabled]="selectedEntidades.length <=0"
                 icon="pi pi-trash" badge="{{selectedEntidades.length}}" 
+                (onClick)="deleteEntidades(selectedEntidades)"
                 />
         </ng-template>
     
@@ -24,7 +28,7 @@
     </p-toolbar>
     <p-table
         #dt
-        [value]="entidadesService.entidades()"
+        [value]="filtered()"
         [rows]="10"
         [paginator]="true"
         [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']"
@@ -33,17 +37,19 @@
         dataKey="id"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [showCurrentPageReport]="true"
-        [loading]="entidadesService.loading()"
+        [loading]="loading()"
         [(selection)]="selectedEntidades" 
     >
         <ng-template pTemplate="caption">
+            <!-- <pre>{{ entidades() | json}}</pre> -->
             <div class="flex align-items-center justify-content-between">
                 <h5 class="m-0">Lista de entidades</h5>
                 <span class="p-input-icon-left">
-                    <i class="pi pi-search"></i>
+                    <!-- <i class="pi pi-search"></i> -->
                     <input 
                         pInputText 
                         type="text" 
+                        (input)="onSearch($event)"
                         class="fietext-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-fullld"
                         placeholder="Search..." />
                 </span>
@@ -96,7 +102,7 @@
                         [rounded]="true" 
                         [outlined]="true" 
                         severity="success" 
-                        (onClick)="edit(entidad)" />
+                        (onClick)="openUpdate(entidad)" />
                     <p-button 
                      
                         icon="pi pi-trash" 
@@ -104,7 +110,7 @@
                         severity="danger" 
                         [rounded]="true" 
                         [outlined]="true" 
-                        (onClick)="entidadesService.delete(entidad)" />
+                        (onClick)="delete(entidad.id)" />
                     <p-button 
                      
                         icon="pi pi-users" 
@@ -124,3 +130,12 @@
     </p-table>
 
 </p-card>
+<app-entidades-form
+[visible]="showModal()"
+[mode]="mode"
+[item]="selectedEntidad"
+(onClose)="cerrarModal($event)"
+(sendingData)="saveEntitie($event)"
+
+
+/>

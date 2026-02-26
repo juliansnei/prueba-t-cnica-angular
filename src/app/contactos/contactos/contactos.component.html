@@ -1,0 +1,141 @@
+<p-card header="Contactos">
+
+  <!-- Header -->
+    <p-confirmDialog />
+    <p-toolbar styleClass="mb-4 gap-2">
+
+    <ng-template pTemplate="left">
+           <p-button
+      label="Nuevo Contacto"
+       class="mr-2" 
+      icon="pi pi-plus"
+      severity="success"
+      (onClick)="abrirCrear()"
+    />
+            <p-button 
+                severity="danger" 
+                label="Eliminar"
+                icon="pi pi-trash" 
+                [class.disabled]="selectedContactos.length <= 0"
+                badge="{{selectedContactos.length}}" 
+                (onClick)="deleteContactos(selectedContactos)"
+                />
+     
+      <!-- <span class="p-tag p-tag-info">{{ contactos()?.length ?? 0}} registros</span> -->
+  
+    </ng-template>
+   
+  </p-toolbar>
+
+  
+  <!-- Tabla -->
+  <p-table
+    [value]="filteredContactos()"
+    [rows]="8"
+    [paginator]="true"
+    [loading]="loading()"
+    [rowHover]="true"
+    dataKey="id"
+    [showCurrentPageReport]="true"
+    styleClass="p-datatable-sm"
+    [(selection)]="selectedContactos"
+     selectionMode="multiple" 
+  >
+  <!-- Buscador -->
+  <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+                <h5 class="m-0">Lista de contactos</h5>
+                <span class="p-input-icon-left">
+                    <input 
+                        pInputText 
+                        type="text" 
+                        (input)="onSearch($event)"
+                        class="fietext-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-fullld"
+                        placeholder="Search..." />
+                </span>
+            </div>
+        </ng-template>
+    <ng-template pTemplate="header">
+ 
+      <tr>
+        <th style="width: 4rem">
+                    <p-tableHeaderCheckbox />
+                </th>
+        <th pSortableColumn="nombre">
+          Nombre <p-sortIcon field="nombre" />
+        </th>
+        <th pSortableColumn="email">
+          Email <p-sortIcon field="email" />
+        </th>
+        <th>Teléfono</th>
+        <th style="width: 8rem">Acciones</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-contacto>
+      <tr>
+          <td>
+                    <p-tableCheckbox [value]="contacto" />
+                </td>
+        <!-- Avatar + Nombre -->
+        <td>
+          <div class="contacto-nombre">
+            <p-avatar
+              [label]="contacto.nombre.charAt(0).toUpperCase()"
+              styleClass="mr-2"
+    
+              shape="circle"
+            />
+            <div>
+              <div class="nombre-texto">{{ contacto.nombre }}</div>
+              <div class="empresa-texto">{{ contacto.empresa }}</div>
+            </div>
+          </div>
+        </td>
+
+        <td>{{ contacto.email }}</td>
+        <td>{{ contacto.telefono }}</td>
+
+
+        <!-- Acciones -->
+        <td>
+          <p-button
+            icon="pi pi-pencil"
+            [rounded]="true"
+            [outlined]="true"
+            severity="info"
+            size="small"
+            class="mr-1"
+            pTooltip="Editar"
+            (onClick)="openEdit(contacto)"
+          />
+          <p-button
+            icon="pi pi-trash"
+            [rounded]="true"
+            [outlined]="true"
+            severity="danger"
+            size="small"
+            pTooltip="Eliminar"
+            (onClick)="eliminar(contacto)"
+          />
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="5" class="text-center p-4">
+          <i class="pi pi-inbox" style="font-size: 2rem; color: #ccc;"></i>
+          <p style="color: #999; margin-top: 0.5rem;">No se encontraron contactos</p>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+</p-card>
+<app-form-contactos
+[entidades]="entidadesOpciones()"
+(sendingData)="saveContact($event)"
+[mode]="mode()"
+[item]="selectedContacto"
+/>

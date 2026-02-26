@@ -8,3 +8,11 @@ export interface Entidad {
     updated_at?: Date;
     created_at?: Date;
 }
+
+export interface EntidadResponse {
+    status?: string,
+    message?:string,
+    data?:Entidad[]
+}
+
+
