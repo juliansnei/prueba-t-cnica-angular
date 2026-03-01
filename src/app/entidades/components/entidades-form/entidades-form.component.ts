@@ -70,6 +70,7 @@ export class EntidadesFormComponent
   changeEffect(){
     effect(() =>
     {
+      if(!this.visible) return;
       const entity = this.item();
     
      if (this.mode() === 'edit' && entity) {

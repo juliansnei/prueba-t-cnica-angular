@@ -86,7 +86,6 @@ export class ContactosComponent implements OnInit {
 
   const term = this.textFilter().toLowerCase().trim();
   const contactos = this.contactos(); 
-  // 👆 asumiendo que en el manager tienes un signal contactos()
 
   if (!term) return contactos;
 
